@@ -24,6 +24,7 @@ jobs:
           sh play.sh init
           cd ../../sld-api-backend/
           pwd
+          sudo apt-get install curl jq -y
           curl -X 'POST' \
             'http://api-backend:8000/api/v1/authenticate/access-token-json' \
             -H 'accept: application/json' \
