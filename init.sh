@@ -10,8 +10,9 @@ start_init_credentials() {
         -H  "accept: application/json" \
         -H  "Content-Type: application/json" \
         -d "{\"username\":\"admin\",\"password\":\"Password08@\"}"|jq .access_token|tr -d '"')
+    echo $token
     
-    curl -X POST "http://localhost:8000/api/v1/users/" \
+    curl -X POST "http://api-backend:8000/api/v1/users/" \
         -H  "accept: application/json" \
         -H  "Authorization: Bearer ${token}" \
         -H  "Content-Type: application/json" \
