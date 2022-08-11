@@ -1,0 +1,24 @@
+name: "sld docker compose"
+on: [pull_request, push]
+
+jobs:
+  kind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: D10S0VSkY-OSS/Stack-Lifecycle-Deployment
+          path: './poc01'
+      - name: Testing0
+        run: |
+          pwd
+          ls -ltr
+      - name: Testing1
+        run: |
+          cd ./poc01/play-with-sld/docker
+          docker-compose up -d
+      - name: Testing2
+        run: |
+          docker ps
+         
