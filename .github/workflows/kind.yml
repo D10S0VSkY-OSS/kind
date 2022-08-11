@@ -22,8 +22,9 @@ jobs:
           echo "environment-kubeconfig:" ${KUBECONFIG}
       - name: Testing1
         run: |
-          kubectl apply -k ./poc01/play-with-sld/kubernetes/k8s
-          kubectl get pods 
+          cd ./poc01/play-with-sld/docker
+          docker-compose up -d
       - name: Testing2
         run: |
-          kubectl wait --for=condition=ready pod -l app="stack-lifecycle-deploy" --timeout=3600s
+          docker ps
+         
