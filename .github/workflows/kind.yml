@@ -21,3 +21,5 @@ jobs:
           echo "current-context:" $(kubectl config current-context)
           echo "environment-kubeconfig:" ${KUBECONFIG}
           kubectl apply -k ./poc01/play-with-sld/kubernetes/k8s
+          kubectl wait --for=condition=ready pod -l app="stack-lifecycle-deploy"
+          kubectl get pods 
