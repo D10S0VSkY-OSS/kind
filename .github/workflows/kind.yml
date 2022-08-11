@@ -5,10 +5,16 @@ jobs:
   kind:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: D10S0VSkY-OSS/Stack-Lifecycle-Deployment
+          path: './poc01'
       - uses: actions/checkout@main
       - uses: engineerd/setup-kind@v0.5.0
       - name: Testing
         run: |
+          ls -ltr ./poc01
           kubectl cluster-info
           kubectl get pods -n kube-system
           echo "current-context:" $(kubectl config current-context)
