@@ -6,11 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     container: 
     steps:
+      - uses: actions/checkout@main
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: D10S0VSkY-OSS/Stack-Lifecycle-Deployment
-          path: './poc01'
+        #with:
+        #  repository: D10S0VSkY-OSS/Stack-Lifecycle-Deployment
+        #  path: './poc01'
       - name: Testing0
         run: |
           pwd
