@@ -22,11 +22,6 @@ jobs:
           ls -ltr
       - name: Testing1
         run: |
-          cd ./poc01/play-with-sld/docker
-          pwd
-          docker-compose up -d
-      - name: Testing2
-        run: |
           docker ps
           cd ./poc01/play-with-sld/docker
           pwd
