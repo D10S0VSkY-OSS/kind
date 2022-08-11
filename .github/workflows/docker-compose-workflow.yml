@@ -2,8 +2,14 @@ name: "sld docker compose"
 on: [pull_request, push]
 
 jobs:
-  kind:
+  docker-compose-sld:
     runs-on: ubuntu-latest
+    container: redis 
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -30,13 +36,4 @@ jobs:
           ss -putan
           sudo apt-get install curl jq -y
           docker network ls
-          curl docker_api-backend_1:8000
-          curl -X 'POST' \
-            http://$(hostname):8000/api/v1/authenticate/access-token-json \
-            -H 'accept: application/json' \
-            -H 'Content-Type: application/json' \
-            -d '{
-            "username": "admin",
-            "password": "Password08@"}'
-
-         
+          curl 0.0.0.0:6379
