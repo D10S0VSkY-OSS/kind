@@ -30,7 +30,7 @@ jobs:
           ss -putan
           sudo apt-get install curl jq -y
           docker network ls
-          curl 0.0.0.0:8000
+          curl docker_api-backend_1:8000
           curl -X 'POST' \
             http://$(hostname):8000/api/v1/authenticate/access-token-json \
             -H 'accept: application/json' \
