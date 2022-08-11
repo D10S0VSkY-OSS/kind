@@ -100,7 +100,7 @@ services:
     hostname: sld-dashboard
     entrypoint: gunicorn --config gunicorn-cfg.py run:app
     restart: always
-    env_file: ../../sld-dashboard/.env
+    env_file: .env_sld
     ports:
       - "5000:5000"
     depends_on:

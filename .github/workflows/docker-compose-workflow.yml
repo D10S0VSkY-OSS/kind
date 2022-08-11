@@ -14,11 +14,12 @@ jobs:
         #  path: './poc01'
       - name: Testing0
         run: |
+          echo "show current folder"
           pwd
+          echo "list content folder"
           ls -ltr
       - name: Testing1
         run: |
-          ls -ltr
           pwd
           docker-compose up -d
       - name: Testing2
