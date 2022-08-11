@@ -10,12 +10,14 @@ jobs:
         with:
           repository: D10S0VSkY-OSS/Stack-Lifecycle-Deployment
           path: './poc01'
-      - uses: actions/checkout@main
-      - uses: engineerd/setup-kind@v0.5.0
+      #- uses: actions/checkout@main
+      #- uses: engineerd/setup-kind@v0.5.0
       - name: Testing
         run: |
+          pwd
+          ls -ltr
           ls -ltr ./poc01
-          kubectl cluster-info
-          kubectl get pods -n kube-system
-          echo "current-context:" $(kubectl config current-context)
-          echo "environment-kubeconfig:" ${KUBECONFIG}
+      #    kubectl cluster-info
+      #    kubectl get pods -n kube-system
+      #    echo "current-context:" $(kubectl config current-context)
+      #    echo "environment-kubeconfig:" ${KUBECONFIG}
