@@ -135,17 +135,15 @@ services:
 
   # curl - result backend
   curl:
-    image: curlimages/curl
+    image: dwdraju/alpine-curl-jq
     hostname: curl
+    volumes: 
+      - ./init.sh:/init.sh
     entrypoint:
       - sh
       - -c
       - |
-        curl -X POST "http://api-backend:8000/api/v1/users/start" \
-          -H  "accept: application/json" \
-          -H  "Content-Type: application/json" \
-          -d "{\"password\":\"Password08@\"}" \
-          -s 
+        sh ./init.sh
     depends_on:
       - db
       - redis
