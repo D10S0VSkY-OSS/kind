@@ -12,7 +12,7 @@ jobs:
         with:
           repository: D10S0VSkY-OSS/Stack-Lifecycle-Deployment
           path: './poc01'
-      - name: Testing
+      - name: Testing0
         run: |
           pwd
           ls -ltr
@@ -20,6 +20,10 @@ jobs:
           kubectl get pods -n kube-system
           echo "current-context:" $(kubectl config current-context)
           echo "environment-kubeconfig:" ${KUBECONFIG}
+      - name: Testing1
+        run: |
           kubectl apply -k ./poc01/play-with-sld/kubernetes/k8s
-          kubectl wait --for=condition=ready pod -l app="stack-lifecycle-deploy" --timeout=3600s
           kubectl get pods 
+      - name: Testing2
+        run: |
+          kubectl wait --for=condition=ready pod -l app="stack-lifecycle-deploy" --timeout=3600s
