@@ -27,4 +27,5 @@ jobs:
         run: |
           pwd
           docker-compose up curl
+          curl --retry 10 --retry-connrefused http://$(ip add sh|grep eth0|grep inet|awk '{print $2}'|cut -d '/' -f 1):8080
           docker run --network kind_default dwdraju/alpine-curl-jq curl  --retry 10 --retry-connrefused http://localhost:8000/
