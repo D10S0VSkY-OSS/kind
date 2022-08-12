@@ -25,4 +25,4 @@ jobs:
         run: |
           pwd
           docker-compose up curl
-          docker run --network container:api-backend dwdraju/alpine-curl-jq -s --retry 10 --retry-connrefused http://localhost:5000/
+          docker run --network container:api-backend dwdraju/alpine-curl-jq curl  --retry 10 --retry-connrefused http://localhost:8000/
