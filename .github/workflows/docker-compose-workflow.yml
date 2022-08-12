@@ -29,4 +29,14 @@ jobs:
           curl -s --retry 10 --retry-connrefused http://$IP:8080
       - name: Testing3
         run: |
+          docker ps
+          IP=$(ip add sh|grep eth0|grep inet|awk '{print $2}'|cut -d '/' -f 1)
+          echo $IP
+          curl -X POST "http://$IP:8000/api/v1/users/start" \
+            -H  "accept: application/json" \
+            -H  "Content-Type: application/json" \
+            -d "{\"password\":\"Password08@\"}" \
+            -s 
+      - name: Testing4
+        run: |
           bash ./init.sh

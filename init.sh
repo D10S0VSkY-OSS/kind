@@ -5,10 +5,10 @@ start_init_credentials() {
         -H  "accept: application/json" \
         -H  "Content-Type: application/json" \
         -d "{\"password\":\"Password08@\"}" \
-        -s -o /dev/null
+        -s 
 
     token=$(curl -X POST \
-        -s "http://$IP:8000/api/v1/authenticate/access-token-json" \
+        -s "http://$IP:8080/api/v1/authenticate/access-token-json" \
         -H  "accept: application/json" \
         -H  "Content-Type: application/json" \
         -d "{\"username\":\"admin\",\"password\":\"Password08@\"}"|jq .access_token|tr -d '"')
