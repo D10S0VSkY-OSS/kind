@@ -25,7 +25,5 @@ jobs:
           ip add sh
       - name: Testing2
         run: |
-          pwd
-          #docker-compose up curl
-          curl -s --retry 10 --retry-connrefused http://$(ip add sh|grep eth0|grep inet|awk '{print $2}'|cut -d '/' -f 1):8080
-          #docker run --network kind_default dwdraju/alpine-curl-jq curl  --retry 10 --retry-connrefused http://localhost:8000/
+          IP=$(ip add sh|grep eth0|grep inet|awk '{print $2}'|cut -d '/' -f 1)
+          curl -s --retry 10 --retry-connrefused http://$IP:8080
