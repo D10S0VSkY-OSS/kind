@@ -16,10 +16,11 @@ jobs:
         run: |
           pwd
           ls -ltr
-      - name: Testing2
+      - name: Testing1
         run: |
           docker-compose up -d
           docker ps
+          docker network ls
           ss -putan
       - name: Testing2
         run: |
