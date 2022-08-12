@@ -1,19 +1,21 @@
+IP=$(ip add sh|grep eth0|grep inet|awk '{print $2}'|cut -d '/' -f 1)
+
 start_init_credentials() {
-    curl -X POST "http://api-backend:8000/api/v1/users/start" \
+    curl -X POST "http://$IP:8000/api/v1/users/start" \
         -H  "accept: application/json" \
         -H  "Content-Type: application/json" \
         -d "{\"password\":\"Password08@\"}" \
         -s -o /dev/null
 
     token=$(curl -X POST \
-        -s "http://api-backend:8000/api/v1/authenticate/access-token-json" \
+        -s "http://$IP:8000/api/v1/authenticate/access-token-json" \
         -H  "accept: application/json" \
         -H  "Content-Type: application/json" \
         -d "{\"username\":\"admin\",\"password\":\"Password08@\"}"|jq .access_token|tr -d '"')
 
     echo "token $token"
     
-    curl -X POST "http://api-backend:8000/api/v1/users/" \
+    curl -X POST "http://$IP:8000/api/v1/users/" \
         -H  "accept: application/json" \
         -H  "Authorization: Bearer ${token}" \
         -H  "Content-Type: application/json" \
@@ -30,8 +32,8 @@ start_init_credentials() {
             echo '---------------------------------------------'
 
     curl -X 'GET' \
-        'http://api-backend:8000/api/v1/users/?skip=0&limit=100' \
-        -H 'accept: application/json' \
+        "http://$IP:8000/api/v1/users/?skip=0&limit=100" \
+        -H "accept: application/json" \
         -H  "Authorization: Bearer ${token}"| jq .
 }
 

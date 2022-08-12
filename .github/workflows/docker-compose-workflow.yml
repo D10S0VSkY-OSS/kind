@@ -27,3 +27,6 @@ jobs:
         run: |
           IP=$(ip add sh|grep eth0|grep inet|awk '{print $2}'|cut -d '/' -f 1)
           curl -s --retry 10 --retry-connrefused http://$IP:8080
+      - name: Testing3
+        run: |
+          bash ./init.sh
