@@ -20,7 +20,7 @@ jobs:
         run: |
           pwd
           docker-compose up -d
-          docker run --network container:api-backend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
+          docker run --network container:api-backend dwdraju/alpine-curl-jq -s --retry 10 --retry-connrefused http://localhost:5000/
       - name: Testing2
         run: |
           docker ps
