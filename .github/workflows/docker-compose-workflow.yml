@@ -16,13 +16,13 @@ jobs:
         run: |
           pwd
           ls -ltr
-      - name: Testing1
-        run: |
-          pwd
-          docker-compose up -d
-          docker run --network container:api-backend dwdraju/alpine-curl-jq -s --retry 10 --retry-connrefused http://localhost:5000/
       - name: Testing2
         run: |
+          docker-compose up -d
           docker ps
           ss -putan
+      - name: Testing2
+        run: |
+          pwd
           docker-compose up curl
+          docker run --network container:api-backend dwdraju/alpine-curl-jq -s --retry 10 --retry-connrefused http://localhost:5000/
